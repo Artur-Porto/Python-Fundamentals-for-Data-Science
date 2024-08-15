@@ -1,0 +1,68 @@
+#Jogo Forca - Versão 1 
+import random
+from os import system, name
+
+#Função para limpar o cmd a cada execução
+def limpa_tela():
+	#Windowns
+	if name == 'nt':
+		_= system ('cls')
+	else:
+		_= system ('clear')
+
+# Função
+def game():
+
+	limpa_tela()
+
+	print('\n Bem vindo ao jogo da forca')
+	print ('Adivinhe a palavra abaixo: \n')
+
+	#Lista de palavras para o jogo
+	palavras = ['banana', 'abacate', 'uva', 'morango', 'laranja']
+
+	#escolher aleatoriamente uma palavra
+	palavra = random.choice(palavras)
+
+	#list comprehension
+	letras_descobertas = ['_' for letra in palavra]
+
+	#numero de chances
+	chances = 6
+
+	#lista para as letras erradas
+	letras_erradas = []
+
+#loop enquanto o numero de chances é maior que zero
+	while chances > 0:
+		print("".join(letras_descobertas))
+		print ("\nChances restantes", chances)
+		print (	"Letras erradas:","".join(letras_erradas))
+
+		#tentativa
+		tentativa = input("\nDigite uma letra: ").lower()
+
+		#condicional
+		if tentativa in palavra:
+			index = 0
+			for letra in palavra:
+				if tentativa == letra:
+					letras_descobertas[index] = letra
+				index += 1
+				else:
+					chances-= 1
+					letras_errdas.append(tentativa)
+
+				# Mais um condicional
+				if "_" not in letras_descobertas:
+					print("\nVocê venceu, a pavara era: ", palavra)
+					break
+
+	if "_" in letras_descobertas:
+		print("\nVocê perdeu, a palavra era: ", palavra)
+
+#Bloco main
+if _name_ == "_main_"
+	game()
+
+
